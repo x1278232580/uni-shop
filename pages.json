@@ -40,13 +40,22 @@
 				"path": "goods_list/goods_list",
 				"style": {}
 			}
-		]
+		    ,{
+                    "path" : "search/search",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 	}],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "好购物商城",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#C00000",
+		"backgroundColor": "#C00000"
 	},
 	"tabBar": {
 		"selectedColor": "#c00000",

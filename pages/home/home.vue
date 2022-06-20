@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<!-- 搜索框 -->
+		<view class="search-box"><my-search @click="gotoSearch"></my-search></view>
+
 		<!-- 轮播图的区域 -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 			<swiper-item v-for="(item, i) in swiperList" :key="i">
@@ -59,13 +62,14 @@ export default {
 			const { data: res } = await uni.$http.get('/api/public/v1/home/swiperdata');
 			if (res.meta.status !== 200) return uni.$showMsg();
 			this.swiperList = res.message;
-			console.log(this.swiperList);
+			// console.log(this.swiperList);
 		},
+		// 获取分类导航数据的方法
 		async getNavList() {
 			const { data: res } = await uni.$http.get('/api/public/v1/home/catitems');
 			if (res.meta.status !== 200) return uni.$showMsg();
 			this.navList = res.message;
-			console.log(this.navList);
+			// console.log(this.navList);
 		},
 		navClickHandler(item) {
 			if (item.name === '分类') {
@@ -74,6 +78,7 @@ export default {
 				});
 			}
 		},
+		// 获取数据列表的方法
 		async getFloorList() {
 			const { data: res } = await uni.$http.get('/api/public/v1/home/floordata');
 			if (res.meta.status !== 200) return uni.$showMsg();
@@ -83,7 +88,13 @@ export default {
 				});
 			});
 			this.floorList = res.message;
-			console.log(this.floorList);
+			// console.log(this.floorList);
+		},
+		// 点击搜索跳转到搜索页面
+		gotoSearch() {
+			uni.navigateTo({
+				url: '/subpkg/search/search'
+			});
 		}
 	}
 };
@@ -123,5 +134,13 @@ swiper {
 .floor-img-box {
 	display: flex;
 	padding-left: 10rpx;
+}
+.search-box {
+	// 设置定位效果为吸顶
+	position: static;
+	// 吸顶的位置
+	top: 0;
+	// 提高顶层 放置呗轮播图覆盖
+	z-index: 999;
 }
 </style>
