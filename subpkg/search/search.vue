@@ -51,10 +51,10 @@ export default {
 			const { data: res } = await uni.$http.get('/api/public/v1/goods/qsearch', { query: this.kw });
 			if (res.meta.status !== 200) return uni.$showMsg();
 			this.searchResults = res.message;
-			console.log(this.searchResults);
+			// console.log(this.searchResults);
 		},
 		gotoDetail(item) {
-			console.log(item.goods_id);
+			// console.log(item.goods_id);
 			uni.navigateTo({
 				url: '/subpkg/goods_detail/goods_detail?goods_id=' + item.goods_id
 			});
